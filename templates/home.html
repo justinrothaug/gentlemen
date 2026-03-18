@@ -167,6 +167,65 @@
             position: relative;
         }
 
+        /* ─── COUNTDOWN ─── */
+        .countdown-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .countdown-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .countdown-event {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--mist);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-unit {
+            text-align: center;
+        }
+
+        .countdown-num {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+        }
+
+        .countdown-lbl {
+            font-family: 'Cinzel', serif;
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-top: 0.3rem;
+        }
+
+        .countdown-sep {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--gold-dim);
+            opacity: 0.3;
+            align-self: flex-start;
+            padding-top: 0.15rem;
+        }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -185,6 +244,33 @@
 <body>
 
 <div class="home">
+    <!-- Countdown -->
+    <div class="countdown-section">
+        <div class="countdown-label">Next Gathering</div>
+        <div class="countdown-event">April 30, 2026</div>
+        <div class="countdown-timer" id="countdown">
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cd-days">--</div>
+                <div class="countdown-lbl">Days</div>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cd-hours">--</div>
+                <div class="countdown-lbl">Hours</div>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cd-mins">--</div>
+                <div class="countdown-lbl">Min</div>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-num" id="cd-secs">--</div>
+                <div class="countdown-lbl">Sec</div>
+            </div>
+        </div>
+    </div>
+
     <div class="ornament">&diams;&diams;&diams;</div>
     <h1>The<br>Distinguished<br>Gentlemen</h1>
     <div class="subtitle">San Francisco</div>
@@ -211,6 +297,31 @@
 </div>
 
 <footer>&diams; The Distinguished Gentlemen &bull; San Francisco &diams;</footer>
+
+<script>
+(function() {
+    const target = new Date('2026-04-30T19:00:00-07:00').getTime();
+
+    function update() {
+        const now = Date.now();
+        let diff = target - now;
+        if (diff < 0) diff = 0;
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+        const secs = Math.floor((diff % 60000) / 1000);
+
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+
+    update();
+    setInterval(update, 1000);
+})();
+</script>
 
 </body>
 </html>
