@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book &mdash; Distinguished Gentlemen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8d5a3;
+            --gold-dim: #8a6d2b;
+            --ink: #0a0a0f;
+            --parchment: #f5f0e6;
+            --parchment-dark: #e8e0d0;
+            --charcoal: #1a1a24;
+            --smoke: #2a2a36;
+            --mist: #9a96a6;
+        }
+
+        body {
+            background: var(--ink);
+            color: var(--parchment);
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ─── TOP BAR ─── */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            background: rgba(10, 10, 15, 0.98);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .top-bar h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .top-bar h1 span {
+            color: var(--mist);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            margin-left: 0.75rem;
+        }
+
+        .top-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .nav-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            text-decoration: none;
+            border: 1px solid var(--gold-dim);
+            padding: 0.35rem 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.08);
+        }
+
+        /* ─── PAGE NAVIGATION ─── */
+        .page-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+        }
+
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .page-indicator {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-dim);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* ─── THUMB DOTS ─── */
+        .thumb-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            padding: 1rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .thumb-dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            border: 1px solid var(--gold-dim);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .thumb-dot:hover { background: rgba(201, 168, 76, 0.3); transform: scale(1.3); }
+        .thumb-dot.active { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px rgba(201, 168, 76, 0.4); }
+
+        /* ─── PAGE CONTAINER ─── */
+        .book-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── PAGE TITLE ─── */
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .page-title span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: var(--mist);
+            letter-spacing: 0.1em;
+            text-transform: none;
+            margin-top: 0.25rem;
+        }
+
+        /* ─── TRANSCRIPTION WITH PIP IMAGE ─── */
+        .transcription {
+            position: relative;
+            background: rgba(26, 26, 36, 0.6);
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            padding: 2rem 2rem 2rem 2rem;
+            border-radius: 2px;
+        }
+
+        .transcription::before {
+            content: 'TRANSCRIPTION';
+            position: absolute;
+            top: -0.55rem;
+            left: 2rem;
+            background: var(--ink);
+            padding: 0 0.75rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+        }
+
+        /* ─── PIP IMAGE (floated top-right corner) ─── */
+        .pip-image-wrapper {
+            float: right;
+            width: 140px;
+            margin: 0 0 1rem 1.25rem;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .pip-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .pip-image {
+            width: 100%;
+            display: block;
+            filter: sepia(8%) contrast(1.02);
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .pip-image:hover {
+            filter: sepia(0%) contrast(1.05);
+        }
+
+        .pip-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
+            color: var(--gold-dim);
+            text-align: center;
+            margin-top: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .pip-fallback {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--charcoal);
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--mist);
+            font-size: 0.65rem;
+            font-style: italic;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .pip-fallback .icon { font-size: 1.2rem; margin-bottom: 0.3rem; opacity: 0.4; }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(5, 5, 10, 0.95);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            padding: 2rem;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            object-fit: contain;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            box-shadow: 0 0 60px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gold-dim);
+            font-size: 2rem;
+            cursor: pointer;
+            font-family: serif;
+        }
+
+        .lightbox-close:hover { color: var(--gold); }
+
+        /* ─── TEXT LINES ─── */
+        .transcription-line {
+            font-size: 1.02rem;
+            line-height: 1.75;
+            color: var(--parchment-dark);
+        }
+
+        .transcription-line.empty { height: 0.7rem; }
+
+        .transcription-line.separator {
+            text-align: center;
+            color: var(--gold-dim);
+            opacity: 0.4;
+            letter-spacing: 0.5em;
+            margin: 0.75rem 0;
+            clear: both;
+        }
+
+        /* ─── KEYBOARD HINT ─── */
+        .keyboard-hint {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.65rem;
+            color: var(--mist);
+            opacity: 0.35;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 168, 76, 0.08);
+            margin-top: 1rem;
+        }
+
+        footer p {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+            opacity: 0.4;
+        }
+
+        @media (max-width: 640px) {
+            .book-container { padding: 1rem; }
+            .transcription { padding: 1.5rem 1rem; }
+            .pip-image-wrapper { width: 110px; margin: 0 0 0.75rem 1rem; }
+            .page-nav { gap: 0.75rem; padding: 0.6rem 1rem; }
+            .nav-btn { padding: 0.35rem 0.6rem; font-size: 0.6rem; }
+            .top-bar h1 span { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <h1>The Book <span>Distinguished Gentlemen</span></h1>
+    <div class="top-links">
+        <a href="/map" class="nav-link">The Map</a>
+        <a href="/" class="nav-link">Home</a>
+    </div>
+</div>
+
+<nav class="page-nav">
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">&larr; Prev</button>
+    <div class="page-indicator" id="pageIndicator">Page 1 of {{ total }}</div>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next &rarr;</button>
+</nav>
+
+<div class="thumb-strip" id="thumbStrip">
+    {% for page in pages %}
+    <button class="thumb-dot {% if loop.index0 == 0 %}active{% endif %}"
+            onclick="goToPage({{ loop.index0 }})"
+            title="Page {{ page.number }}: {{ page.title }}"></button>
+    {% endfor %}
+</div>
+
+<main class="book-container">
+    {% for page in pages %}
+    <article class="page {% if loop.index0 == 0 %}active{% endif %}" data-page="{{ loop.index0 }}">
+        <div class="page-title">
+            {{ page.title }}
+            <span>Page {{ page.number }} of {{ total }}</span>
+        </div>
+
+        <div class="transcription">
+            <div class="pip-image-wrapper" onclick="openLightbox('/static/{{ page.image }}')">
+                <img class="pip-image"
+                     src="/static/{{ page.image }}"
+                     alt="Page {{ page.number }}"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="pip-fallback" style="display:none;">
+                    <div class="icon">&#9670;</div>
+                    <div>{{ page.image }}</div>
+                </div>
+                <div class="pip-label">Click to enlarge</div>
+            </div>
+
+            {% for line in page.transcription %}
+                {% if line == '' %}
+                    <div class="transcription-line empty"></div>
+                {% elif '━' in line or '─' in line %}
+                    <div class="transcription-line separator">&diams;</div>
+                {% else %}
+                    <div class="transcription-line">{{ line }}</div>
+                {% endif %}
+            {% endfor %}
+            <div style="clear:both;"></div>
+        </div>
+    </article>
+    {% endfor %}
+</main>
+
+<div class="keyboard-hint">Use arrow keys or swipe to navigate &bull; Click image to enlarge</div>
+
+<footer>
+    <p>&diams; The Distinguished Gentlemen &bull; San Francisco &diams;</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="Full page">
+</div>
+
+<script>
+    let currentPage = 0;
+    const totalPages = {{ total }};
+    const pages = document.querySelectorAll('.page');
+    const dots = document.querySelectorAll('.thumb-dot');
+
+    function goToPage(index) {
+        if (index < 0 || index >= totalPages) return;
+        pages[currentPage].classList.remove('active');
+        dots[currentPage].classList.remove('active');
+        currentPage = index;
+        pages[currentPage].classList.add('active');
+        dots[currentPage].classList.add('active');
+        document.getElementById('pageIndicator').textContent = `Page ${currentPage + 1} of ${totalPages}`;
+        document.getElementById('prevBtn').disabled = currentPage === 0;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages - 1;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changePage(dir) { goToPage(currentPage + dir); }
+
+    // Lightbox
+    function openLightbox(src) {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('lightbox').classList.add('open');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+    }
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('lightbox').classList.contains('open')) {
+            if (e.key === 'Escape') closeLightbox();
+            return;
+        }
+        if (e.key === 'ArrowLeft') changePage(-1);
+        if (e.key === 'ArrowRight') changePage(1);
+    });
+
+    // Swipe
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 60) changePage(diff > 0 ? 1 : -1);
+    });
+
+    document.getElementById('prevBtn').disabled = true;
+</script>
+
+</body>
+</html>
