@@ -6,7 +6,7 @@ Each page has: number, image filename, title, and transcription lines.
 PAGES = [
     {
         "number": 1,
-        "image": "IMG_3985.jpg",
+        "image": "IMG_3985.png",
         "title": "The Title Page",
         "transcription": [
             '"THE BOOK"',
@@ -19,7 +19,7 @@ PAGES = [
     },
     {
         "number": 2,
-        "image": "IMG_3986.jpg",
+        "image": "IMG_3986.png",
         "title": "The Roster & Table of Contents",
         "transcription": [
             "THE DISTINGUISHED GENTLEMEN",
@@ -44,7 +44,7 @@ PAGES = [
     },
     {
         "number": 3,
-        "image": "IMG_3987.jpg",
+        "image": "IMG_3987.png",
         "title": "Founding Members & Philosophy",
         "transcription": [
             "Mr. Brian Cook \u2014 Founding Member",
@@ -61,7 +61,7 @@ PAGES = [
     },
     {
         "number": 4,
-        "image": "IMG_3988.jpg",
+        "image": "IMG_3988.png",
         "title": "Roles & Core Values",
         "transcription": [
             "EXPLANATION OF ROLES",
@@ -84,7 +84,7 @@ PAGES = [
     },
     {
         "number": 5,
-        "image": "IMG_3989.jpg",
+        "image": "IMG_3989.png",
         "title": "Recruitment Protocols",
         "transcription": [
             "2 | NEW DG ADDITIONS",
@@ -100,7 +100,7 @@ PAGES = [
     },
     {
         "number": 6,
-        "image": "IMG_3990.jpg",
+        "image": "IMG_3990.png",
         "title": "Nominations & By-Laws",
         "transcription": [
             "4. Nominations are to be surfaced to the group during the monthly dinner sessions. The nominee should be known by all members \u2014 it is the nominating member\u2019s responsibility to socialize the nominee.",
@@ -120,7 +120,7 @@ PAGES = [
     },
     {
         "number": 7,
-        "image": "IMG_3992.jpg",
+        "image": "IMG_3992.png",
         "title": "Challenge Coin & Monthly Dinner By-Laws",
         "transcription": [
             "9. The Challenge Coin",
@@ -146,7 +146,7 @@ PAGES = [
     },
     {
         "number": 8,
-        "image": "IMG_3993.jpg",
+        "image": "IMG_3993.png",
         "title": "Dinner Logistics & Etiquette",
         "transcription": [
             "This should be followed up with a Google Calendar invite holding the event w/ details.",
@@ -176,7 +176,7 @@ PAGES = [
     },
     {
         "number": 9,
-        "image": "IMG_3994.jpg",
+        "image": "IMG_3994.png",
         "title": "Dinner Flow & Run of Show",
         "transcription": [
             "3. Dinner",
@@ -201,7 +201,7 @@ PAGES = [
     },
     {
         "number": 10,
-        "image": "IMG_3995.jpg",
+        "image": "IMG_3995.png",
         "title": "Voting & Airing of Grievances",
         "transcription": [
             "...hear the proposal. Only a majority of votes are needed to hear the proposal.",
@@ -223,7 +223,7 @@ PAGES = [
     },
     {
         "number": 11,
-        "image": "IMG_3996.jpg",
+        "image": "IMG_3996.png",
         "title": "Closing & DG I Recap",
         "transcription": [
             "5) Closing",
@@ -245,7 +245,7 @@ PAGES = [
     },
     {
         "number": 12,
-        "image": "IMG_3997.jpg",
+        "image": "IMG_3997.png",
         "title": "DG II & DG III Recaps",
         "transcription": [
             "DG II",
@@ -271,7 +271,7 @@ PAGES = [
     },
     {
         "number": 13,
-        "image": "IMG_3998.jpg",
+        "image": "IMG_3998.png",
         "title": "DG IV & DG V Recaps",
         "transcription": [
             "DG IV",
@@ -296,7 +296,7 @@ PAGES = [
     },
     {
         "number": 14,
-        "image": "IMG_3999.jpg",
+        "image": "IMG_3999.png",
         "title": "DG VI & DG VII Recaps",
         "transcription": [
             "DG VI",
@@ -322,7 +322,7 @@ PAGES = [
     },
     {
         "number": 15,
-        "image": "IMG_4001.jpg",
+        "image": "IMG_4001.png",
         "title": "DG VIII & DG IX Recaps",
         "transcription": [
             "DG VIII",
@@ -347,7 +347,7 @@ PAGES = [
     },
     {
         "number": 16,
-        "image": "IMG_4002.jpg",
+        "image": "IMG_4002.png",
         "title": "DG X & DG Wedding",
         "transcription": [
             "DG X",
@@ -370,7 +370,7 @@ PAGES = [
     },
     {
         "number": 17,
-        "image": "IMG_4003.jpg",
+        "image": "IMG_4003.png",
         "title": "DG XI \u2014 FESTIVUS II (DG Turns 1!)",
         "transcription": [
             "DG XI // FESTIVUS II (DG Turns 1!)",
@@ -403,7 +403,7 @@ PAGES = [
     },
     {
         "number": 18,
-        "image": "IMG_4004.jpg",
+        "image": "IMG_4004.png",
         "title": "DG Survey Results",
         "transcription": [
             "DG Survey",
@@ -436,7 +436,7 @@ PAGES = [
     },
     {
         "number": 19,
-        "image": "IMG_4005.jpg",
+        "image": "IMG_4005.png",
         "title": "Nominations & Grievances Notes",
         "transcription": [
             "Nom\u2019s [Nominations]",
@@ -453,7 +453,7 @@ PAGES = [
     },
     {
         "number": 20,
-        "image": "IMG_4006.jpg",
+        "image": "IMG_4006.png",
         "title": "DG XIII & DG XIV Recaps",
         "transcription": [
             "DG XIII",
@@ -481,7 +481,7 @@ PAGES = [
     },
     {
         "number": 21,
-        "image": "IMG_4007.jpg",
+        "image": "IMG_4007.png",
         "title": "The DG Poem & DG XV",
         "transcription": [
             "Bungalow, the only place we go",
@@ -512,7 +512,7 @@ PAGES = [
     },
     {
         "number": 22,
-        "image": "IMG_4008.jpg",
+        "image": "IMG_4008.png",
         "title": "DG XVI \u2014 HOPR Night",
         "transcription": [
             "DG XVI",
@@ -533,7 +533,7 @@ PAGES = [
     },
     {
         "number": 23,
-        "image": "IMG_4009.jpg",
+        "image": "IMG_4009.png",
         "title": "DG XVIII \u2014 The Great Flower Fiasco",
         "transcription": [
             "DG XVIII",
@@ -553,7 +553,7 @@ PAGES = [
     },
     {
         "number": 24,
-        "image": "IMG_4010.jpg",
+        "image": "IMG_4010.png",
         "title": "DG XVIII (cont.) & Festivus IX",
         "transcription": [
             "Wesley: didn\u2019t get job he wanted \u2192 laid off but okay.",
@@ -578,7 +578,7 @@ PAGES = [
     },
     {
         "number": 25,
-        "image": "IMG_4011.jpg",
+        "image": "IMG_4011.png",
         "title": "Festivus IX (cont.) & Notes",
         "transcription": [
             "MR PINK | 4.75 \u2014 DC | Moves in w/ Natalie | JAN",
@@ -602,7 +602,7 @@ PAGES = [
     },
     {
         "number": 26,
-        "image": "IMG_4012.jpg",
+        "image": "IMG_4012.png",
         "title": "Late Night Reflections",
         "transcription": [
             "After Flour & Water, we went to Benders (Dive bar in the Mission). I hate this shit and would rather be in the Marina. I am Tommy.",
@@ -615,7 +615,7 @@ PAGES = [
     },
     {
         "number": 27,
-        "image": "IMG_4013.jpg",
+        "image": "IMG_4013.png",
         "title": "Memorable Moments \u2014 The Christmas Poem (Pt. 1)",
         "transcription": [
             "6) Memorable Moments",
@@ -635,7 +635,7 @@ PAGES = [
     },
     {
         "number": 28,
-        "image": "IMG_4014.jpg",
+        "image": "IMG_4014.png",
         "title": "The Christmas Poem (Pt. 2)",
         "transcription": [
             "There\u2019s Mr Blue the Fashion King",
@@ -661,7 +661,7 @@ PAGES = [
     },
     {
         "number": 29,
-        "image": "IMG_4015.jpg",
+        "image": "IMG_4015.png",
         "title": "Quotes",
         "transcription": [
             '"QUOTES"',
@@ -675,7 +675,7 @@ PAGES = [
     },
     {
         "number": 30,
-        "image": "IMG_4016.jpg",
+        "image": "IMG_4016.png",
         "title": "DG IV Extended Notes",
         "transcription": [
             "DG IV",
@@ -691,7 +691,7 @@ PAGES = [
     },
     {
         "number": 31,
-        "image": "IMG_4017.jpg",
+        "image": "IMG_4017.png",
         "title": "DG XVI Trivia Night",
         "transcription": [
             "DG 16",
@@ -705,7 +705,7 @@ PAGES = [
     },
     {
         "number": 32,
-        "image": "IMG_4018.jpg",
+        "image": "IMG_4018.png",
         "title": "Goals & Positives",
         "transcription": [
             "(Business Card: Mr. Brian Cook)",
@@ -730,7 +730,7 @@ PAGES = [
     },
     {
         "number": 33,
-        "image": "IMG_4019.jpg",
+        "image": "IMG_4019.png",
         "title": "Member Updates & Stories",
         "transcription": [
             "Hasn\u2019t hit gout in 2 years",
@@ -750,7 +750,7 @@ PAGES = [
     },
     {
         "number": 34,
-        "image": "IMG_4020.jpg",
+        "image": "IMG_4020.png",
         "title": "October 25 Nominations & Grievances",
         "transcription": [
             "Post-Dinner drinks \u2014 April Jean (A bar in North Beach).",
@@ -772,7 +772,7 @@ PAGES = [
     },
     {
         "number": 35,
-        "image": "IMG_4021.jpg",
+        "image": "IMG_4021.png",
         "title": "DG XX \u2014 FESTIVUS III",
         "transcription": [
             "DG XX \u2014 FESTIVUS III",
@@ -793,7 +793,7 @@ PAGES = [
     },
     {
         "number": 36,
-        "image": "IMG_4022.jpg",
+        "image": "IMG_4022.png",
         "title": "Member Discussion & Charter Review",
         "transcription": [
             "Potential Member Discussion:",
@@ -812,7 +812,7 @@ PAGES = [
     },
     {
         "number": 37,
-        "image": "IMG_4023.jpg",
+        "image": "IMG_4023.png",
         "title": "DG XXI \u2014 Olympic Club Crab Feed",
         "transcription": [
             "DG XXI \u2014 2/13/25",
@@ -837,7 +837,7 @@ PAGES = [
     },
     {
         "number": 38,
-        "image": "IMG_4024.jpg",
+        "image": "IMG_4024.png",
         "title": "Memorable Quotes & March Madness",
         "transcription": [
             "Emma Watson \u2014 Olivia / some scammery scam",
@@ -855,7 +855,7 @@ PAGES = [
     },
     {
         "number": 39,
-        "image": "IMG_4025.jpg",
+        "image": "IMG_4025.png",
         "title": "DG Dinner 06/25/25",
         "transcription": [
             "DG Dinner 06/25/25",
@@ -876,7 +876,7 @@ PAGES = [
     },
     {
         "number": 40,
-        "image": "IMG_4026.jpg",
+        "image": "IMG_4026.png",
         "title": "Quick Notes",
         "transcription": [
             "MR PINK \u2192 Drink",
@@ -886,7 +886,7 @@ PAGES = [
     },
     {
         "number": 41,
-        "image": "IMG_4027.jpg",
+        "image": "IMG_4027.png",
         "title": "Beer Olympics",
         "transcription": [
             "CHAMPION",
@@ -901,7 +901,7 @@ PAGES = [
     },
     {
         "number": 42,
-        "image": "IMG_4028.jpg",
+        "image": "IMG_4028.png",
         "title": "DG XXV \u2014 Salt Lake City",
         "transcription": [
             "DG XXV",
