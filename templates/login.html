@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Distinguished Gentlemen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8d5a3;
+            --gold-dim: #8a6d2b;
+            --ink: #0a0a0f;
+            --parchment: #f5f0e6;
+            --charcoal: #1a1a24;
+            --mist: #9a96a6;
+            --red: #a04040;
+        }
+
+        body {
+            background: var(--ink);
+            color: var(--parchment);
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(201, 168, 76, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(201, 168, 76, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .login-box {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 380px;
+            width: 100%;
+        }
+
+        .ornament {
+            color: var(--gold-dim);
+            font-size: 1.4rem;
+            letter-spacing: 1.2em;
+            margin-bottom: 2rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-shadow: 0 0 60px rgba(201, 168, 76, 0.12);
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--mist);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+            margin: 2.5rem auto;
+        }
+
+        .prompt-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .password-input {
+            width: 220px;
+            padding: 0.7rem 1rem;
+            background: rgba(26, 26, 36, 0.6);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            color: var(--gold-light);
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .password-input::placeholder {
+            color: var(--gold-dim);
+            opacity: 0.4;
+            letter-spacing: 0.2em;
+        }
+
+        .password-input:focus {
+            border-color: rgba(201, 168, 76, 0.5);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.06);
+        }
+
+        .submit-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: none;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 0.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+        }
+
+        .error {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--red);
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            color: var(--gold-dim);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="ornament">&diams;&diams;&diams;</div>
+    <h1>The<br>Distinguished<br>Gentlemen</h1>
+    <div class="subtitle">San Francisco</div>
+
+    <div class="divider"></div>
+
+    <div class="prompt-label">Members Only</div>
+
+    <form method="POST" action="/">
+        <input type="password"
+               name="password"
+               class="password-input"
+               placeholder="&bull;&bull;&bull;&bull;"
+               autocomplete="off"
+               autofocus>
+        <button type="submit" class="submit-btn">Enter</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+</div>
+
+<footer>&diams; EST. 2022 &bull; D/G &diams;</footer>
+
+</body>
+</html>
