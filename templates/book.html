@@ -492,6 +492,13 @@
     });
 
     document.getElementById('prevBtn').disabled = true;
+
+    // Navigate to page from URL hash (e.g. #page=10)
+    const hashMatch = window.location.hash.match(/page=(\d+)/);
+    if (hashMatch) {
+        const targetPage = parseInt(hashMatch[1], 10);
+        if (targetPage >= 0 && targetPage < totalPages) goToPage(targetPage);
+    }
 </script>
 
 </body>
