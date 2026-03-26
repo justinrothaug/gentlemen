@@ -314,6 +314,26 @@
             text-align: right;
         }
 
+        .popup-book-link {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 0.25rem 0.6rem;
+            margin-top: 0.35rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .popup-book-link:hover {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: var(--gold);
+        }
+
         /* ─── LEGEND ─── */
         .map-legend {
             position: fixed;
@@ -448,6 +468,39 @@ const typeIcons = {
     other: '\u2726',
 };
 
+// ─── Dinner → Book Page mapping (0-based index) ───
+const dinnerToPage = {
+    'DG I':          10,
+    'DG II':         11,
+    'DG III':        11,
+    'DG IV':         12,
+    'DG V':          12,
+    'DG VI':         13,
+    'DG VII':        13,
+    'DG VIII':       14,
+    'DG IX':         14,
+    'DG X':          15,
+    'DG WEDDING':    15,
+    'DG XI':         16,
+    'DG XIII':       19,
+    'DG XIV':        19,
+    'DG XVI — HOPR': 21,
+    'DG XVI — Trivia': 30,
+    'DG XVIII':      22,
+    'Festivus IX':   23,
+    'DG XX':         34,
+    'DG XXI':        36,
+    'DG Dinner':     38,
+    'DG XXV':        41,
+};
+
+function getBookPage(dinnerName) {
+    for (const [key, page] of Object.entries(dinnerToPage)) {
+        if (dinnerName.toUpperCase().includes(key.toUpperCase())) return page;
+    }
+    return null;
+}
+
 // ─── Build Markers ───
 venues.forEach(venue => {
     const icon = typeIcons[venue.type] || '\u2726';
@@ -465,12 +518,16 @@ venues.forEach(venue => {
 
     // Build popup
     let eventsHtml = venue.events.map(ev => {
+        const pageIdx = getBookPage(ev.dinner);
         let html = `<div class="popup-event">`;
         html += `<div class="popup-dinner">${ev.dinner}</div>`;
         html += `<div class="popup-meta"><span class="date">${ev.date}</span> &bull; <span class="role">${ev.role}</span>`;
         if (ev.dg) html += ` &bull; ${ev.dg}`;
         html += `</div>`;
         if (ev.note) html += `<div class="popup-note">${ev.note}</div>`;
+        if (pageIdx !== null) {
+            html += `<a class="popup-book-link" href="/book#page=${pageIdx}">&#9670; View in Book</a>`;
+        }
         html += `</div>`;
         return html;
     }).join('');
