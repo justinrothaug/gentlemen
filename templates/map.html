@@ -460,13 +460,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
 }).addTo(map);
 
-// Fit map to all markers after they're added
-const allCoords = venues.map(v => [v.lat, v.lng]);
-if (allCoords.length > 0) {
-    const bounds = L.latLngBounds(allCoords);
-    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
-}
-
 // ─── Icon Map ───
 const typeIcons = {
     restaurant: '\u{1F374}',
