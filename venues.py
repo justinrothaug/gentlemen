@@ -454,4 +454,15 @@ VENUES = [
              "note": "Nikkei restaurant in Union Square. 'Justin looks like Matt Damon.'"}
         ],
     },
+    # ── DG XXV — Salt Lake City ──
+    {
+        "name": "Salt Lake City",
+        "lat": 40.7608,
+        "lng": -111.8910,
+        "type": "other",
+        "events": [
+            {"dinner": "DG XXV — Salt Lake City", "date": "9/13/25", "role": "Dinner", "dg": "CPT Pritchett",
+             "note": "The first DG dinner outside San Francisco."}
+        ],
+    },
 ]
