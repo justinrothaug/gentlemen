@@ -179,6 +179,76 @@
             text-transform: uppercase;
             color: var(--gold-dim);
             margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .calendar-toggle {
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--gold-dim);
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .calendar-toggle:hover {
+            color: var(--gold);
+            transform: scale(1.15);
+        }
+
+        .schedule-popup {
+            display: none;
+            position: absolute;
+            top: 2.2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--charcoal);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 1.2rem 1.5rem;
+            z-index: 100;
+            min-width: 260px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201, 168, 76, 0.05);
+        }
+
+        .schedule-popup.visible {
+            display: block;
+        }
+
+        .schedule-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .schedule-list {
+            list-style: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--mist);
+            text-align: left;
+        }
+
+        .schedule-list li {
+            padding: 0.2rem 0;
+            display: flex;
+            justify-content: space-between;
+            letter-spacing: 0.05em;
+        }
+
+        .schedule-list li.past {
+            text-decoration: line-through;
+            opacity: 0.35;
+        }
+
+        .schedule-list li.current {
+            color: var(--gold);
+            font-weight: 600;
         }
 
         .countdown-event {
@@ -246,8 +316,28 @@
 <div class="home">
     <!-- Countdown -->
     <div class="countdown-section">
-        <div class="countdown-label">Next Gathering</div>
-        <div class="countdown-event">March 20, 2026</div>
+        <div class="countdown-label">
+            April 2026
+            <span class="calendar-toggle" id="calToggle" title="View Schedule">&#128197;
+                <div class="schedule-popup" id="schedulePopup">
+                    <div class="schedule-title">2026 Schedule</div>
+                    <ul class="schedule-list">
+                        <li class="past"><span>January</span><span>&mdash;</span></li>
+                        <li class="past"><span>February</span><span>Mr. Clifford</span></li>
+                        <li class="past"><span>March</span><span>Mr. Rothaug</span></li>
+                        <li class="current"><span>April</span><span>Mr. Hewitt</span></li>
+                        <li><span>May</span><span>Mr. Meinhofer</span></li>
+                        <li><span>June</span><span>Dr. Cudahy</span></li>
+                        <li><span>July</span><span>Mr. Cook</span></li>
+                        <li><span>August</span><span>Mr Molinari</span></li>
+                        <li><span>September</span><span>CPT Pritchett</span></li>
+                        <li><span>October</span><span>Mr. Rothaug</span></li>
+                        <li><span>November</span><span>ESQ Deming</span></li>
+                        <li><span>December</span><span>TBD</span></li>
+                    </ul>
+                </div>
+            </span>
+        </div>
         <div class="countdown-timer" id="countdown">
             <div class="countdown-unit">
                 <div class="countdown-num" id="cd-days">--</div>
@@ -300,7 +390,7 @@
 
 <script>
 (function() {
-    const target = new Date('2026-03-20T19:00:00-07:00').getTime();
+    const target = new Date('2026-04-17T19:00:00-07:00').getTime();
 
     function update() {
         const now = Date.now();
@@ -320,6 +410,21 @@
 
     update();
     setInterval(update, 1000);
+
+    // Calendar popup toggle
+    const toggle = document.getElementById('calToggle');
+    const popup = document.getElementById('schedulePopup');
+
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        popup.classList.toggle('visible');
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!toggle.contains(e.target)) {
+            popup.classList.remove('visible');
+        }
+    });
 })();
 </script>
 
